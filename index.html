@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>про100 дизайн — Хакатоны Технополиса</title>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+		/>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body class="bg-zinc-950 text-zinc-200">
+		<!-- Navbar -->
+		<nav
+			class="fixed top-0 left-0 right-0 z-50 bg-zinc-950/80 backdrop-blur-lg border-b border-zinc-800"
+		>
+			<div
+				class="max-w-screen-2xl mx-auto px-8 py-6 flex items-center justify-between"
+			>
+				<div class="flex items-center gap-3">
+					<div
+						class="w-9 h-9 bg-yellow-400 rounded-2xl flex items-center justify-center text-black font-bold text-2xl logo-font"
+					>
+						п
+					</div>
+					<div>
+						<span class="logo-font text-3xl font-semibold tracking-tighter"
+							>про100</span
+						>
+						<span
+							class="text-yellow-400 text-3xl font-semibold tracking-tighter"
+							>дизайн</span
+						>
+					</div>
+				</div>
+
+				<div class="hidden md:flex items-center gap-10 text-base font-medium">
+					<a href="#hero" class="nav-link">Главная</a>
+					<a href="#catalog" class="nav-link">Каталог</a>
+
+					<a href="#about" class="nav-link">О проекте</a>
+					<a href="#footer" class="nav-link">Контакты</a>
+				</div>
+			</div>
+		</nav>
+
+		<!-- Hero -->
+		<section id="hero" class="hero-bg min-h-screen flex items-center pt-20">
+			<div
+				class="max-w-screen-2xl mx-auto px-8 grid md:grid-cols-2 gap-16 items-center"
+			>
+				<div class="space-y-8 pt-20">
+					<div
+						class="inline-flex items-center gap-2 bg-zinc-900 border border-zinc-700 rounded-full px-5 py-2 text-sm"
+					>
+						<div
+							class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"
+						></div>
+						События Технополиса Сургут 2026
+					</div>
+
+					<h1
+						class="text-7xl md:text-8xl font-semibold leading-none tracking-tighter logo-font"
+					>
+						Дизайн.<br />Код.<br />Технополис.
+					</h1>
+
+					<p class="text-2xl text-zinc-400 max-w-lg">
+						Каталог хакатонов, дизайн-спринтов и IT-мероприятий для школьников и
+						студентов
+					</p>
+
+					<button
+						onclick="scrollToSection('catalog')"
+						class="px-10 py-6 bg-yellow-400 hover:bg-amber-300 transition-all text-black font-semibold text-lg rounded-3xl flex items-center gap-3 group"
+					>
+						Смотреть события
+						<i
+							class="fa-solid fa-arrow-down transition-transform group-hover:translate-y-1"
+						></i>
+					</button>
+				</div>
+
+				<div class="relative hidden md:block">
+					<div
+						class="bg-zinc-900 border border-zinc-700 rounded-3xl p-4 shadow-2xl"
+					>
+						<img
+							src="images/gigachad.jfif"
+							alt="Хакатон Технополис"
+							class="rounded-2xl w-full h-auto object-cover"
+						/>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Catalog -->
+		<section id="catalog" class="py-24 bg-zinc-950">
+			<div class="max-w-screen-2xl mx-auto px-8">
+				<div
+					class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16"
+				>
+					<div>
+						<div
+							class="uppercase tracking-[3px] text-yellow-400 text-sm font-medium mb-2"
+						>
+							Каталог 2026
+						</div>
+						<h2 class="text-6xl font-semibold tracking-tighter">
+							Найдите своё мероприятие
+						</h2>
+					</div>
+
+					<input
+						id="searchInput"
+						type="text"
+						placeholder="Поиск по названию..."
+						onkeyup="filterEvents()"
+						class="bg-zinc-900 border border-zinc-700 focus:border-yellow-400 rounded-3xl px-7 py-5 w-full md:w-96 outline-none text-base"
+					/>
+				</div>
+
+				<div class="flex flex-wrap gap-3 mb-12 border-b border-zinc-800 pb-8">
+					<button
+						onclick="filterByCategory(this)"
+						data-category="all"
+						class="filter-btn active"
+					>
+						Все
+					</button>
+					<button
+						onclick="filterByCategory(this)"
+						data-category="hackathon"
+						class="filter-btn"
+					>
+						Хакатоны
+					</button>
+					<button
+						onclick="filterByCategory(this)"
+						data-category="design"
+						class="filter-btn"
+					>
+						Дизайн
+					</button>
+					<button
+						onclick="filterByCategory(this)"
+						data-category="conference"
+						class="filter-btn"
+					>
+						Фестивали
+					</button>
+
+					<div class="ml-auto flex items-center gap-4">
+						<select
+							id="dateFilter"
+							onchange="filterEvents()"
+							class="bg-zinc-900 border border-zinc-700 rounded-3xl px-6 py-4 text-sm outline-none"
+						>
+							<option value="all">Любая дата</option>
+							<option value="march">Март 2026</option>
+							<option value="april">Апрель 2026</option>
+							<option value="may">Май 2026</option>
+						</select>
+						<button
+							onclick="resetFilters()"
+							class="px-6 py-4 text-zinc-400 hover:text-white flex items-center gap-2 text-sm"
+						>
+							<i class="fa-solid fa-rotate"></i> Сбросить
+						</button>
+					</div>
+				</div>
+
+				<div
+					id="eventsGrid"
+					class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+				></div>
+			</div>
+		</section>
+
+		<!-- About -->
+		<section id="about" class="py-28 bg-black">
+			<div class="max-w-screen-2xl mx-auto px-8">
+				<div class="grid md:grid-cols-12 gap-16 items-center">
+					<div class="md:col-span-5">
+						<div class="sticky top-28">
+							<div
+								class="text-yellow-400 text-sm uppercase tracking-widest mb-4"
+							>
+								Технополис Сургут
+							</div>
+							<h2 class="text-6xl leading-none font-semibold tracking-tighter">
+								Место, где рождаются идеи
+							</h2>
+							<p class="mt-8 text-zinc-400 text-lg max-w-md">
+								Образовательный центр, где школьники и студенты создают проекты,
+								участвуют в хакатонах и развивают цифровые навыки.
+							</p>
+						</div>
+					</div>
+					<div class="md:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-8">
+						<div class="bg-zinc-900 rounded-3xl p-10">
+							<i class="fa-solid fa-calendar text-6xl text-yellow-400 mb-8"></i>
+							<div class="text-3xl font-semibold">Регулярные хакатоны</div>
+							<div class="text-zinc-400 mt-4">Каждый месяц новые вызовы</div>
+						</div>
+						<div class="bg-zinc-900 rounded-3xl p-10">
+							<i class="fa-solid fa-users text-6xl text-yellow-400 mb-8"></i>
+							<div class="text-3xl font-semibold">Открыто для всех</div>
+							<div class="text-zinc-400 mt-4">От 10 лет и старше</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Footer -->
+		<footer id="footer" class="bg-zinc-950 border-t border-zinc-800 py-20">
+			<div class="max-w-screen-2xl mx-auto px-8">
+				<div
+					class="flex flex-col md:flex-row justify-between items-center gap-10"
+				>
+					<div class="flex items-center gap-3">
+						<div
+							class="w-8 h-8 bg-yellow-400 rounded-2xl flex items-center justify-center text-black font-bold text-3xl logo-font"
+						>
+							п
+						</div>
+						<span class="logo-font text-4xl font-semibold tracking-tighter"
+							>про100 дизайн</span
+						>
+					</div>
+					<div class="text-zinc-500 text-sm">
+						© 2026 Про100 Дизайн • Для Технополиса Сургут
+					</div>
+					<div class="flex gap-8 text-sm">
+						<a
+							href="https://t.me/"
+							target="_blank"
+							class="hover:text-yellow-400"
+							>Telegram</a
+						>
+						<a
+							href="https://vk.com/"
+							target="_blank"
+							class="hover:text-yellow-400"
+							>VK Технополис</a
+						>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+		<script src="script.js"></script>
+	</body>
+</html>

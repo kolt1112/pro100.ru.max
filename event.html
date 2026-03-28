@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title id="pageTitle">Мероприятие — про100 дизайн</title>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+		/>
+		<!-- <link rel="stylesheet" href="style.css" /> -->
+	</head>
+	<body class="bg-zinc-950 text-zinc-200 min-h-screen">
+		<!-- Navbar (тот же) -->
+		<nav
+			class="fixed top-0 left-0 right-0 z-50 bg-zinc-950/80 backdrop-blur-lg border-b border-zinc-800"
+		>
+			<div
+				class="max-w-screen-2xl mx-auto px-8 py-6 flex items-center justify-between"
+			>
+				<div class="flex items-center gap-3">
+					<div
+						class="w-9 h-9 bg-yellow-400 rounded-2xl flex items-center justify-center text-black font-bold text-2xl logo-font"
+					>
+						п
+					</div>
+					<div>
+						<span class="logo-font text-3xl font-semibold tracking-tighter"
+							>про100</span
+						>
+						<span
+							class="text-yellow-400 text-3xl font-semibold tracking-tighter"
+							>дизайн</span
+						>
+					</div>
+				</div>
+				<div class="hidden md:flex items-center gap-10 text-base font-medium">
+					<a href="index.html#hero" class="nav-link">Главная</a>
+					<a href="index.html#catalog" class="nav-link">Каталог</a>
+					<a href="index.html#about" class="nav-link">О проекте</a>
+					<a href="index.html#footer" class="nav-link">Контакты</a>
+				</div>
+			</div>
+		</nav>
+
+		<div class="pt-28 pb-20 max-w-screen-2xl mx-auto px-8">
+			<a
+				href="index.html#catalog"
+				class="inline-flex items-center gap-2 text-yellow-400 hover:text-amber-300 mb-8"
+			>
+				← Назад к каталогу
+			</a>
+
+			<div id="eventContent" class="grid md:grid-cols-12 gap-12">
+				<!-- Контент будет заполнен через JavaScript -->
+			</div>
+		</div>
+
+		<script>
+			// Получаем id из URL
+			const params = new URLSearchParams(window.location.search);
+			const eventId = parseInt(params.get("id"));
+
+			const events = [
+				/* сюда вставь весь массив events из script.js */
+				{
+					id: 1,
+					title: "IT-Хакатон «Цифровой Сургут»",
+					date: "15–17 марта 2026",
+					location: "Технополис Сургут",
+					type: "hackathon",
+					price: "Бесплатно",
+					participants: "120",
+					image: "images/gigachad1.jfif",
+					category: "hackathon",
+					description:
+						"Создайте цифровые решения для умного города. Разработка веб-приложений, мобильных сервисов и систем анализа данных. Лучшие проекты получат призы и возможность реализации.",
+				},
+				{
+					id: 2,
+					title: "Nanograd Design Challenge",
+					date: "22–24 марта 2026",
+					location: "Технополис + Онлайн",
+					type: "design",
+					price: "Бесплатно",
+					participants: "85",
+					image: "images/gigachad2.jfif",
+					category: "design",
+					description:
+						"Дизайн-челлендж в стиле космического города будущего. Разработка интерфейсов, 3D-моделирование и визуализация идей для Nanograd.",
+				},
+				{
+					id: 3,
+					title: "Робототехника и Программирование",
+					date: "5–7 апреля 2026",
+					location: "Технополис Сургут",
+					type: "hackathon",
+					price: "Бесплатно",
+					participants: "95",
+					image: "images/gigachad3.jfif",
+					category: "hackathon",
+					description:
+						"Соберите и запрограммируйте робота для выполнения сложных задач. Участие в командных соревнованиях по робототехнике и программированию.",
+				},
+				{
+					id: 4,
+					title: "UI/UX Design Sprint для школьников",
+					date: "12–14 апреля 2026",
+					location: "Онлайн",
+					type: "design",
+					price: "Бесплатно",
+					participants: "180",
+					image: "images/gigachad4.jfif",
+					category: "design",
+					description:
+						"Интенсивный спринт по созданию пользовательских интерфейсов. Изучение Figma, принципов UX и создание прототипов реальных приложений.",
+				},
+				{
+					id: 5,
+					title: "Космический Хакатон Nanograd",
+					date: "20–22 мая 2026",
+					location: "Технополис Сургут",
+					type: "hackathon",
+					price: "Бесплатно",
+					participants: "110",
+					image: "images/gigachad5.jfif",
+					category: "hackathon",
+					description:
+						"Разработка проектов, связанных с освоением космоса. От систем жизнеобеспечения до приложений для космических исследований.",
+				},
+				{
+					id: 6,
+					title: "Web-Design Мастерская",
+					date: "1–10 марта 2026",
+					location: "Онлайн",
+					type: "design",
+					price: "Бесплатно",
+					participants: "220",
+					image: "images/gigachad6.jfif",
+					category: "design",
+					description:
+						"Практическая мастерская по современному веб-дизайну. Создание адаптивных сайтов, работа с Tailwind CSS и изучение трендов 2026 года.",
+				},
+				{
+					id: 7,
+					title: "IT-Фестиваль Технополис 2026",
+					date: "28–30 апреля 2026",
+					location: "Сургут",
+					type: "conference",
+					price: "Бесплатно",
+					participants: "350",
+					image: "images/gigachad7.jfif",
+					category: "conference",
+					description:
+						"Большой фестиваль информационных технологий. Мастер-классы, лекции, выставка проектов и networking для участников всех возрастов.",
+				},
+				{
+					id: 8,
+					title: "Мобильные Приложения и Игры",
+					date: "10–12 июня 2026",
+					location: "Технополис Сургут",
+					type: "hackathon",
+					price: "Бесплатно",
+					participants: "75",
+					image: "images/gigachad8.jfif",
+					category: "hackathon",
+					description:
+						"Создайте свою первую мобильную игру или полезное приложение. Работа с Flutter, Unity и публикация проекта в магазинах приложений.",
+				},
+			];
+
+			const event = events.find(e => e.id === eventId);
+
+			if (!event) {
+				document.getElementById("eventContent").innerHTML = `
+                <div class="col-span-12 text-center py-20">
+                    <h2 class="text-4xl font-semibold mb-4">Мероприятие не найдено</h2>
+                    <a href="index.html#catalog" class="text-yellow-400 hover:underline">Вернуться в каталог</a>
+                </div>
+            `;
+			} else {
+				document.title = `${event.title} — про100 дизайн`;
+
+				const html = `
+                <div class="md:col-span-7">
+                    <div class="bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-800">
+                        ${
+													event.image
+														? `<img src="${event.image}" alt="${event.title}" class="w-full h-auto">`
+														: `<div class="w-full h-96 bg-zinc-800 flex items-center justify-center text-zinc-500">Фото мероприятия будет здесь</div>`
+												}
+                    </div>
+                </div>
+
+                <div class="md:col-span-5 space-y-8">
+                    <div>
+                        <span class="inline-block px-6 py-2 bg-zinc-800 text-yellow-400 text-sm font-medium rounded-3xl">
+                            ${event.type === "hackathon" ? "ХАКАТОН" : event.type === "design" ? "ДИЗАЙН-СПРИНТ" : "ФЕСТИВАЛЬ"}
+                        </span>
+                    </div>
+
+                    <h1 class="text-5xl font-semibold tracking-tighter leading-none">${event.title}</h1>
+
+                    <div class="flex flex-wrap gap-6 text-lg">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-calendar text-yellow-400"></i>
+                            <div>
+                                <div class="text-zinc-400 text-sm">Дата</div>
+                                <div>${event.date}</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-location-dot text-yellow-400"></i>
+                            <div>
+                                <div class="text-zinc-400 text-sm">Место</div>
+                                <div>${event.location}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-zinc-900 rounded-3xl p-8 border border-zinc-800">
+                        <div class="text-emerald-400 text-xl font-medium mb-1">${event.price}</div>
+                        <div class="text-zinc-400">${event.participants} участников</div>
+                    </div>
+
+                    <div class="prose prose-invert max-w-none text-zinc-300 text-lg leading-relaxed">
+                        ${event.description}
+                    </div>
+
+                    <button onclick="alert('Регистрация открыта! Для участия напишите в Telegram Технополиса или приходите лично.')"
+                            class="w-full py-6 bg-yellow-400 hover:bg-amber-300 transition-all text-black font-semibold text-xl rounded-3xl">
+                        Зарегистрироваться на мероприятие
+                    </button>
+
+                    <p class="text-center text-zinc-500 text-sm">
+                        После регистрации с вами свяжутся организаторы
+                    </p>
+                </div>
+            `;
+
+				document.getElementById("eventContent").innerHTML = html;
+			}
+		</script>
+	</body>
+</html>
